@@ -39,7 +39,7 @@ def plot_results(da, fits, pos_inc, output_dir):
                 seg["time"].values.astype("datetime64[D]")
                 - np.datetime64(fit["start"], "D")
             ).astype(int)
-            y = exp_model(t, fit["a"], fit["b"], fit["c"])
+            y = exp_model(t, fit["A"], fit["TAU_L"], fit["C"])
 
             if not tau_L_label_added:
                 ax.plot(seg["time"], y, "r--", label="Tau_L")
