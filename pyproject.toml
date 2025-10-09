@@ -1,0 +1,33 @@
+[project]
+name = "smm"
+version = "0.1.0"
+description = "Soil Moisture Memory (SMM) analysis toolkit"
+authors = [
+    { name = "Mohammad Ali Farmani" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pandas",
+    "xarray",
+    "netCDF4",
+    "scipy",
+    "matplotlib",
+    "PyYAML",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["smm"]
+
+[tool.setuptools.package-data]
+"smm" = ["*.yml"]
+
+[tool.setuptools.dynamic]
+version = {attr = "smm.__version__"}
+
