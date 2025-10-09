@@ -1,6 +1,6 @@
 # 🛰️ Soil Moisture Memory (SMM) Toolkit
 
-[![Tests](https://github.com/mfarmani95/SMM-Project/actions/workflows/tests.yml/badge.svg)](https://github.com/mfarmani95/SMM-Project/actions)
+[![TestPyPI](https://img.shields.io/badge/TestPyPI-smm--toolkit-blue)](https://test.pypi.org/project/smm-toolkit/)
 [![PyPI](https://img.shields.io/pypi/v/smm-toolkit.svg)](https://pypi.org/project/smm-toolkit/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.5194/hess--29--547--2025-blue)](https://doi.org/10.5194/hess-29-547-2025)
