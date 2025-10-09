@@ -1,0 +1,2 @@
+- Create env with `conda env create -f environment.yml` (or `python -m venv .venv && pip install -r requirements.txt`)
+- Run: `python -m smm.main configs/example_config.yml`

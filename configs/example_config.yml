@@ -1,0 +1,22 @@
+data:
+  sm_file: "/xdisk/behrangi/farmani/SMM/Rahimi/data_4_Mohammad/surface_SM_2019-01.nc"
+  prcp_file: "/xdisk/behrangi/farmani/SMM/Rahimi/data_4_Mohammad/precip_2019-01.nc"
+  var_sm: "H2OSOI"
+  var_prcp: "PRECTmms"
+  lat_index: 431
+  lon_index: -1
+
+parameters:
+  thickness: 0.1           # m
+  threshold_factor: 0.12   # fraction of (max - min) SM
+  min_length: 3
+  max_zeros: 0
+  max_consecutive_positives: 1
+  max_gap_days: 6
+  r2_threshold: 0.8
+  dim: "time"
+
+output:
+  save_dir: "results"
+  plot: true
+  save_csv: true
