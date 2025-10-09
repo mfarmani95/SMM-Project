@@ -15,6 +15,9 @@ parameters:
   max_gap_days: 6
   r2_threshold: 0.8
   dim: "time"
+  precip_length_unit: mm        # mm, cm, in, m
+  precip_time_unit: s           # s, h, day, week, month
+  sm_timestep: day              # h, day, week, month
 
 output:
   save_dir: "results"
