@@ -1,5 +1,5 @@
 [project]
-name = "smm"
+name = "smm-toolkit"
 version = "0.1.0"
 description = "Soil Moisture Memory (SMM) analysis toolkit"
 authors = [
