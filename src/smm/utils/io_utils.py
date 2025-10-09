@@ -150,9 +150,9 @@ def save_tl_fits(fits_list, output_dir):
             clean_fits.append({
                 "start": str(f["start"]),
                 "end": str(f["end"]),
-                "a": float(f["a"]) if isinstance(f["a"], (np.floating, float)) else f["a"],
-                "b": float(f["b"]) if isinstance(f["b"], (np.floating, float)) else f["b"],
-                "c": float(f["c"]) if isinstance(f["c"], (np.floating, float)) else f["c"],
+                "a": float(f["A"]) if isinstance(f["A"], (np.floating, float)) else f["A"],
+                "b": float(f["TAU_L"]) if isinstance(f["TAU_L"], (np.floating, float)) else f["TAU_L"],
+                "c": float(f["C"]) if isinstance(f["C"], (np.floating, float)) else f["C"],
                 "r2": float(f["r2"]) if isinstance(f["r2"], (np.floating, float)) else f["r2"]
             })
 

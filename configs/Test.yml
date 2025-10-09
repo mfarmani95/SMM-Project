@@ -1,0 +1,26 @@
+data:
+  sm_file: "/Users/mohammad/Downloads/surface_SM_2019-01.nc"
+  prcp_file: "/Users/mohammad/Downloads/precip_2019-01.nc"
+  var_sm: "H2OSOI"
+  var_prcp: "PRECTmms"
+  lat: 431
+  lon: -1
+
+parameters:
+  thickness: 0.1
+  threshold_factor: 0.12
+  min_length: 3
+  max_zeros: 0
+  max_consecutive_positives: 1
+  max_gap_days: 6
+  r2_threshold: 0.8
+  dim: "time"
+  precip_length_unit: mm        # mm, cm, in, m
+  precip_time_unit: s           # s, h, day, week, month
+  sm_timestep: day              # h, day, week, month
+
+output:
+  save_dir: "/Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR"
+  plot: false
+  save_csv: true
+

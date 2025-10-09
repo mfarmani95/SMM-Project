@@ -1,0 +1,76 @@
+2025-10-09 16:06:57,315 [INFO] root: Logger initialized
+2025-10-09 16:06:57,316 [INFO] root: Starting SMM analysis using config: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/configs/Test.yml
+2025-10-09 16:06:57,324 [DEBUG] matplotlib.pyplot: Loaded backend macosx version unknown.
+2025-10-09 16:06:59,165 [INFO] smm.main: 🚀 Starting SMM pipeline using config file: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/configs/Test.yml
+2025-10-09 16:06:59,178 [DEBUG] smm.main: Configuration loaded successfully:
+{'data': {'sm_file': '/Users/mohammad/Downloads/surface_SM_2019-01.nc', 'prcp_file': '/Users/mohammad/Downloads/precip_2019-01.nc', 'var_sm': 'H2OSOI', 'var_prcp': 'PRECTmms', 'lat': 431, 'lon': -1}, 'parameters': {'thickness': 0.1, 'threshold_factor': 0.12, 'min_length': 3, 'max_zeros': 0, 'max_consecutive_positives': 1, 'max_gap_days': 6, 'r2_threshold': 0.8, 'dim': 'time', 'precip_length_unit': 'mm', 'precip_time_unit': 's', 'sm_timestep': 'day'}, 'output': {'save_dir': '/Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR', 'plot': False, 'save_csv': True}}
+2025-10-09 16:06:59,179 [INFO] smm.main: 📥 Loading soil moisture and precipitation data...
+2025-10-09 16:06:59,179 [INFO] smm.dataloader: 📥 Loading data from SM file: /Users/mohammad/Downloads/surface_SM_2019-01.nc and PRCP file: /Users/mohammad/Downloads/precip_2019-01.nc
+2025-10-09 16:06:59,256 [DEBUG] smm.dataloader: SM dataset dims: FrozenMappingWarningOnValuesAccess({'time': 31, 'lon': 444, 'lat': 432}), PRCP dataset dims: FrozenMappingWarningOnValuesAccess({'time': 31, 'lat': 432, 'lon': 444})
+2025-10-09 16:06:59,264 [INFO] smm.dataloader: 📍 Extracted using indices: lat_idx=431, lon_idx=-1
+2025-10-09 16:06:59,265 [DEBUG] smm.dataloader: Aligned precipitation time axis with soil moisture.
+2025-10-09 16:06:59,265 [INFO] smm.dataloader: 🔄 Converting precipitation units: mm/s to day
+2025-10-09 16:06:59,265 [INFO] smm.utils.unit_utils: Converting precip from [mm/s] to match SM timestep [day]
+2025-10-09 16:06:59,270 [INFO] smm.utils.unit_utils: ✅ Precip conversion complete. Scale factor=0.000012
+2025-10-09 16:06:59,270 [INFO] smm.dataloader: ✅ Precipitation converted successfully.
+2025-10-09 16:06:59,270 [INFO] smm.dataloader: ✅ Data loading completed. Timesteps: 31
+2025-10-09 16:06:59,270 [INFO] smm.main: ✅ Data loaded successfully.
+2025-10-09 16:06:59,271 [DEBUG] smm.main: Soil moisture shape: (31,), Precip shape: (31,)
+2025-10-09 16:06:59,276 [DEBUG] smm.main: Threshold computed: 0.000136
+2025-10-09 16:06:59,277 [INFO] smm.analyzer: 🧮 SoilMoistureAnalyzer initialized
+2025-10-09 16:06:59,277 [DEBUG] smm.analyzer: threshold=0.00013586997985839844, min_length=3, max_zeros=0, max_pos=1, max_gap_days=6, r2_threshold=0.8, dim=time
+2025-10-09 16:06:59,277 [INFO] smm.main: 🧮 Analyzer initialized.
+2025-10-09 16:06:59,277 [INFO] smm.analyzer: 🔎 Detecting drydowns...
+2025-10-09 16:06:59,279 [INFO] smm.analyzer: ✅ Found 3 drydowns (after min length filtering).
+2025-10-09 16:06:59,279 [INFO] smm.analyzer: 📉 Fitting exponential decay to 3 drydowns...
+2025-10-09 16:06:59,282 [DEBUG] smm.analyzer: Fit success [2018-12-30T20:00:00.000000 → 2019-01-04T20:00:00.000000]: A=0.0010, B=0.4403, C=0.9652, R²=0.969
+2025-10-09 16:06:59,285 [DEBUG] smm.analyzer: Fit success [2019-01-10T20:00:00.000000 → 2019-01-22T20:00:00.000000]: A=0.0011, B=0.1250, C=0.9653, R²=0.992
+2025-10-09 16:06:59,286 [WARNING] smm.analyzer: ⚠️ Fit failed for drydown [2019-01-26T20:00:00.000000 → 2019-01-29T20:00:00.000000]: Initial guess is outside of provided bounds
+2025-10-09 16:06:59,286 [INFO] smm.analyzer: ✅ Finished fitting. 2 successful fits.
+2025-10-09 16:06:59,286 [INFO] smm.analyzer: 📊 2 fits passed R² threshold (0.8).
+2025-10-09 16:06:59,286 [INFO] smm.analyzer: 🌧️ Detected 10 positive increments (Tau_S candidates).
+2025-10-09 16:06:59,286 [INFO] smm.main: ✅ Drydown detection complete: 2 events found, 3 fits.
+2025-10-09 16:06:59,286 [DEBUG] smm.main: Fit sample: {'start': np.datetime64('2018-12-30T20:00:00.000000'), 'end': np.datetime64('2019-01-04T20:00:00.000000'), 'A': np.float64(0.0010039957895014845), 'B': np.float64(0.44033902107821093), 'C': np.float64(0.9651553631375575), 'r2': np.float64(0.9686249379980332)}
+2025-10-09 16:06:59,286 [INFO] smm.analyzer: ⏳ Calculating short-term timescales (Tau_S)...
+2025-10-09 16:06:59,287 [DEBUG] smm.analyzer: Tau_S for [2019-01-04T20:00:00.000000 → 2019-01-05T20:00:00.000000] = -0.048
+2025-10-09 16:06:59,288 [DEBUG] smm.analyzer: Tau_S for [2019-01-05T20:00:00.000000 → 2019-01-06T20:00:00.000000] = -0.045
+2025-10-09 16:06:59,288 [DEBUG] smm.analyzer: Tau_S for [2019-01-06T20:00:00.000000 → 2019-01-07T20:00:00.000000] = -0.049
+2025-10-09 16:06:59,289 [DEBUG] smm.analyzer: Tau_S for [2019-01-07T20:00:00.000000 → 2019-01-08T20:00:00.000000] = -0.056
+2025-10-09 16:06:59,289 [DEBUG] smm.analyzer: Tau_S for [2019-01-08T20:00:00.000000 → 2019-01-09T20:00:00.000000] = -0.056
+2025-10-09 16:06:59,290 [DEBUG] smm.analyzer: Tau_S for [2019-01-09T20:00:00.000000 → 2019-01-10T20:00:00.000000] = -0.064
+2025-10-09 16:06:59,291 [DEBUG] smm.analyzer: Tau_S for [2019-01-22T20:00:00.000000 → 2019-01-23T20:00:00.000000] = -0.046
+2025-10-09 16:06:59,291 [DEBUG] smm.analyzer: Tau_S for [2019-01-23T20:00:00.000000 → 2019-01-24T20:00:00.000000] = -0.046
+2025-10-09 16:06:59,292 [DEBUG] smm.analyzer: Tau_S for [2019-01-24T20:00:00.000000 → 2019-01-25T20:00:00.000000] = -0.051
+2025-10-09 16:06:59,292 [DEBUG] smm.analyzer: Tau_S for [2019-01-28T20:00:00.000000 → 2019-01-29T20:00:00.000000] = -0.052
+2025-10-09 16:06:59,292 [INFO] smm.analyzer: ✅ Computed 10 Tau_S values.
+2025-10-09 16:06:59,292 [INFO] smm.main: ✅ Computed 10 short-term timescale (Tau_S) values.
+2025-10-09 16:06:59,292 [DEBUG] smm.main: Ts sample: [np.float64(-0.04788709392085354), np.float64(-0.04479193283045984), np.float64(-0.04934695289315257), np.float64(-0.05617158638300501), np.float64(-0.056389308437079205)]
+2025-10-09 16:06:59,292 [INFO] smm.main: 💾 Saving Ts values...
+2025-10-09 16:06:59,293 [INFO] smm.utils.io_utils: Saving Ts values with metadata to output directory: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR
+2025-10-09 16:06:59,293 [DEBUG] smm.utils.io_utils: Ensured output directory exists: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR
+2025-10-09 16:06:59,295 [DEBUG] smm.utils.io_utils: Constructed DataFrame with 10 entries.
+2025-10-09 16:06:59,298 [INFO] smm.utils.io_utils: ✅ Ts values and metadata successfully saved as CSV: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR/Ts_values.csv
+2025-10-09 16:06:59,305 [DEBUG] smm.utils.io_utils: CSV head preview:
+                start                 end  increment        Ts
+0 2019-01-04 20:00:00 2019-01-05 20:00:00   0.000354 -0.047887
+1 2019-01-05 20:00:00 2019-01-06 20:00:00   0.000643 -0.044792
+2 2019-01-06 20:00:00 2019-01-07 20:00:00   0.000099 -0.049347
+3 2019-01-07 20:00:00 2019-01-08 20:00:00   0.000017 -0.056172
+4 2019-01-08 20:00:00 2019-01-09 20:00:00   0.000014 -0.056389
+2025-10-09 16:06:59,307 [INFO] smm.utils.io_utils: ✅ Ts values and metadata successfully saved as JSON: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR/Ts_values.json
+2025-10-09 16:06:59,307 [INFO] smm.main: ✅ Ts values saved successfully.
+2025-10-09 16:06:59,307 [INFO] smm.main: 💾 Saving TL fit parameters...
+2025-10-09 16:06:59,307 [INFO] smm.utils.io_utils: Saving TL fit parameters to output directory: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR
+2025-10-09 16:06:59,307 [DEBUG] smm.utils.io_utils: Ensured output directory exists: /Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR
+2025-10-09 16:06:59,307 [ERROR] smm.utils.io_utils: ❌ Failed to save TL fit parameters: 'a'
+Traceback (most recent call last):
+  File "/Users/mohammad/miniforge3/envs/smm/lib/python3.10/site-packages/smm/utils/io_utils.py", line 153, in save_tl_fits
+    "a": float(f["a"]) if isinstance(f["a"], (np.floating, float)) else f["a"],
+KeyError: 'a'
+2025-10-09 16:06:59,308 [ERROR] smm.main: ❌ SMM pipeline failed: 'a'
+Traceback (most recent call last):
+  File "/Users/mohammad/miniforge3/envs/smm/lib/python3.10/site-packages/smm/main.py", line 86, in SMM
+    save_tl_fits(fits, cfg["output"]["save_dir"])
+  File "/Users/mohammad/miniforge3/envs/smm/lib/python3.10/site-packages/smm/utils/io_utils.py", line 153, in save_tl_fits
+    "a": float(f["a"]) if isinstance(f["a"], (np.floating, float)) else f["a"],
+KeyError: 'a'
