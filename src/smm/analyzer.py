@@ -53,7 +53,7 @@ class SoilMoistureAnalyzer:
 
             results.append({
                 "start": start, "end": end,
-                "A": A, "TaU_L": B, "C": C, "r2": r2
+                "A": A, "TAU_L": B, "C": C, "r2": r2
             })
 
         logger.info(f"✅ Finished fitting. {sum(np.isfinite([f['r2'] for f in results]))} successful fits.")
