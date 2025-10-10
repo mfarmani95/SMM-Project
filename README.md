@@ -22,7 +22,7 @@ The **SMM Toolkit** detects and analyzes soil moisture drydowns and computes sho
 Key features:
 - 📈 Automatic **drydown detection**
 - 🧪 **Exponential curve fitting** and R² filtering
-- - 🕒 Long-term **timescale (TL)** computation for drydowns
+- 🕒 Long-term **timescale (TL)** computation for drydowns
 - 🕒 Short-term **timescale (Ts)** computation for positive increments
 - 📊 Plotting and result export
 - 🧰 YAML-based configuration for reproducible runs
