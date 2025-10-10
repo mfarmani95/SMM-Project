@@ -29,10 +29,128 @@ Key features:
 
 ---
 
+
 ## 🧰 Installation
 
 You can install the package directly from PyPI:
 
 ```bash
 pip install smm-toolkit
+```
+
+Or from TestPyPI for development testing:
+
+```bash
+pip install -i https://test.pypi.org/simple/ smm-toolkit
+```
+
+---
+
+## 🚀 Quick Start
+
+```python
+import logging
+from pathlib import Path
+from smm.main import SMM
+from smm.utils.logger import setup_logger
+
+if __name__ == "__main__":
+    setup_logger()
+    config_path = Path("/path/to/config.yml")
+    logging.info(f"Starting SMM analysis using config: {config_path}")
+    SMM(config_path)
+```
+
+---
+
+## 🧾 Example YAML Configuration
+
+```yaml
+data:
+  sm_file: "/path/to/SM.nc"
+  prcp_file: "/path/to/precip_2019-01.nc"
+  var_sm: "SM_Var_Name"
+  var_prcp: "PREC_Var_Name"
+  lat: 431          # can be index or actual coordinate
+  lon: -111.2       # can be index or actual coordinate
+
+parameters:
+  thickness: 0.1
+  threshold_factor: 0.12
+  min_length: 3
+  max_zeros: 0
+  max_consecutive_positives: 1
+  max_gap_days: 6
+  r2_threshold: 0.8
+  dim: "time"
+  precip_length_unit: mm
+  precip_time_unit: s
+  sm_timestep: day
+
+output:
+  save_dir: "path/to/output"
+  plot: true
+  save_csv: true
+```
+
+---
+
+## 🧪 Development Setup
+
+```bash
+git clone https://github.com/mfarmani95/SMM-Toolkit.git
+cd SMM-Toolkit
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
+For conda users:
+
+```bash
+conda env create -f environment.yml
+conda activate smm-toolkit
+```
+
+---
+
+## 🧰 Useful Makefile Commands
+
+| Command             | Description                                |
+|----------------------|---------------------------------------------|
+| `make install`       | Install package in editable mode           |
+| `make dev`           | Install dev dependencies                   |
+| `make test`          | Run test suite with pytest                 |
+| `make format`        | Auto-format code with Black                |
+| `make lint`          | Run static checks with Ruff                |
+| `make build`         | Build distribution package                 |
+| `make upload-test`   | Upload to TestPyPI                         |
+| `make upload`        | Upload to PyPI                             |
+
+---
+
+## 📜 Citation
+
+If you use this toolkit, please cite:
+
+> Farmani, M. A., Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M. (2025).  
+> *Do land models miss key soil hydrological processes controlling soil moisture memory?*  
+> **Hydrology and Earth System Sciences**, 29, 547–564.  
+> DOI: [10.5194/hess-29-547-2025](https://doi.org/10.5194/hess-29-547-2025)
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).  
+© 2025 Mohammad A. Farmani.
+
+---
+
+## 💧 Acknowledgements
+
+Developed as part of hydrologic research at the University of Arizona.  
+Inspired by the need for reproducible, transparent, and flexible soil moisture memory analysis tools for land–atmosphere interaction studies.
+
 

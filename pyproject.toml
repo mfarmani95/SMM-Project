@@ -1,6 +1,6 @@
 [project]
 name = "smm-toolkit"
-version = "0.1.4"
+version = "0.1.4.1"
 description = "A Python toolkit for computing Soil Moisture Memory (SMM) based on drydown analysis and exponential decay fitting, as described in Farmani et al. (2025), Hydrology and Earth System Sciences."
 authors = [
     { name = "Mohammad Ali Farmani", email = "mohammadalifarmani95@gmail.com" }

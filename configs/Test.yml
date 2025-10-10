@@ -21,6 +21,6 @@ parameters:
 
 output:
   save_dir: "/Users/mohammad/Desktop/PHD/PHD/Behrangi  and Niu/ISMN/SMM_code/smm/resultsR"
-  plot: false
+  plot: true
   save_csv: true
 
